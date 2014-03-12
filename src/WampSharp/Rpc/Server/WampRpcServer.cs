@@ -33,7 +33,7 @@ namespace WampSharp.Rpc.Server
 #if !NET45
         public void Call(IWampClient client, string callId, string procUri, params TMessage[] arguments)
 #else
-        public async void Call(IWampClient client, string callId, string procUri, params TMessage[] arguments)
+        public void Call(IWampClient client, string callId, string procUri, params TMessage[] arguments)
 #endif
         {
             procUri = ResolveUri(client, procUri);
@@ -52,7 +52,7 @@ namespace WampSharp.Rpc.Server
                 InnerCall(client, callId, method.InvokeAsync(parameters));
             }
 #else
-                object result = await method.InvokeAsync(parameters);
+                object result = method.Invoke(parameters);
                 client.CallResult(callId, result);
             }
             catch (WampRpcCallException ex)
