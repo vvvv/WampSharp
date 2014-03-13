@@ -78,6 +78,33 @@ namespace WampSharp.Rpc.Server
 			mParameterTypes = new Type[]{typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5)};
 		}
 		
+		public void SetAction<T1, T2, T3, T4, T5, T6>(Action<T1, T2, T3, T4, T5, T6> action)
+		{
+			mMethod = (array) => {
+				action((T1)array[0], (T2)array[1], (T3)array[2], (T4)array[3], (T5)array[4], (T6)array[5]);
+				return null;
+			};
+			mParameterTypes = new Type[]{typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6)};
+		}
+		
+		public void SetAction<T1, T2, T3, T4, T5, T6, T7>(Action<T1, T2, T3, T4, T5, T6, T7> action)
+		{
+			mMethod = (array) => {
+				action((T1)array[0], (T2)array[1], (T3)array[2], (T4)array[3], (T5)array[4], (T6)array[5], (T7)array[6]);
+				return null;
+			};
+			mParameterTypes = new Type[]{typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7)};
+		}
+		
+		public void SetAction<T1, T2, T3, T4, T5, T6, T7, T8>(Action<T1, T2, T3, T4, T5, T6, T7, T8> action)
+		{
+			mMethod = (array) => {
+				action((T1)array[0], (T2)array[1], (T3)array[2], (T4)array[3], (T5)array[4], (T6)array[5], (T7)array[6], (T8)array[7]);
+				return null;
+			};
+			mParameterTypes = new Type[]{typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7), typeof(T8)};
+		}
+		
 		public string Name
 		{
 			get {return mRPCID;}
